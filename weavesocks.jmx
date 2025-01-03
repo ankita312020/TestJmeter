@@ -24,7 +24,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="BASE_URL_1" elementType="Argument">
             <stringProp name="Argument.name">BASE_URL_1</stringProp>
-            <stringProp name="Argument.value">172.19.205.170</stringProp>
+            <stringProp name="Argument.value">172.17.20.93</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -64,8 +64,8 @@
         <boolProp name="CacheManager.controlledByThread">false</boolProp>
       </CacheManager>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
-        <intProp name="ThreadGroup.num_threads">5</intProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <longProp name="ThreadGroup.duration">120</longProp>
         <longProp name="ThreadGroup.delay">0</longProp>
@@ -78,12 +78,12 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Register">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Register" enabled="false">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/register">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Register" enabled="false">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -96,7 +96,7 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&quot;username&quot;:&quot;Test&quot;,&quot;password&quot;:&quot;&quot;,&quot;email&quot;:&quot;&quot;,&quot;firstName&quot;:&quot;TestUser&quot;,&quot;lastName&quot;:&quot;Demo&quot;}</stringProp>
+                  <stringProp name="Argument.value">{&quot;username&quot;:&quot;Test2&quot;,&quot;password&quot;:&quot;&quot;,&quot;email&quot;:&quot;&quot;,&quot;firstName&quot;:&quot;TestUser2&quot;,&quot;lastName&quot;:&quot;Demo2&quot;}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -122,12 +122,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add to cart">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add to cart" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/cart">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/cart" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -166,12 +166,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Go to Cart">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Go to Cart" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/basket.html">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/basket.html" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -260,12 +260,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add address">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add address" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/addresses">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/addresses" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -360,12 +360,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add payment">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Add payment" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/cards">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/cards" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -404,12 +404,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Proceed to checkout">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Proceed to checkout" enabled="false">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/orders">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/orders" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
@@ -438,12 +438,12 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="View Order">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="View Order" enabled="true">
           <boolProp name="TransactionController.parent">true</boolProp>
           <boolProp name="TransactionController.includeTimers">false</boolProp>
         </TransactionController>
         <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/customer-order.html?order=/orders/6771d35889d397000796fc30">
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="http://172.19.205.170:30001/customer-order.html?order=/orders/6771d35889d397000796fc30" enabled="true">
             <stringProp name="HTTPSampler.domain">${BASE_URL_1}</stringProp>
             <stringProp name="HTTPSampler.port">30001</stringProp>
             <stringProp name="HTTPSampler.protocol">http</stringProp>
