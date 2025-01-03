@@ -1,11 +1,26 @@
 name: Run JMeter Tests
 
+#on:
+#  push:
+#    branches:
+#      - main
+#  pull_request:
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-
+  workflow_dispatch:
+    inputs:
+      virtual_user:
+        required: true
+        description: Enter the virtual user count
+        default: '10'
+      ramp_up_time:
+        required: true
+        description: Enter the ramp up time in sec
+        default: '10'
+      loop_count:
+        required: true
+        description: Enter the loop count
+        default: '1'
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   jmeter-tests:
     runs-on: ubuntu-latest
