@@ -1,0 +1,75 @@
+name: Run 7 JMeter Tests sequentially
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'github/workflows/executeMultipleTest.yml'
+
+  workflow_dispatch:
+
+jobs:
+  jmeter-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Install Java (required for JMeter)
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      # Install JMeter
+      - name: Install JMeter
+        run: |
+          wget https://downloads.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
+          tar -xzf apache-jmeter-5.6.3.tgz
+          mv apache-jmeter-5.6.3 ~/jmeter
+
+      # Define JMX files to run
+      - name: Define Test Files
+        run: |
+          echo -e "Script1.jmx\nScript2.jmx" > test-files.txt
+
+      # Run JMeter Tests Sequentially
+      - name: Run JMeter Tests
+        shell: bash
+        run: |
+          while IFS= read -r jmx_file; do
+            echo "Starting test: $jmx_file"
+            results_file="results_${jmx_file%.jmx}.jtl"
+            report_dir="html-report-${jmx_file%.jmx}"
+          
+            if [[ -f "$jmx_file" ]]; then
+              ~/jmeter/bin/jmeter -n -t "$jmx_file" -l "$results_file"
+              echo "Test completed: $jmx_file"
+          
+              ~/jmeter/bin/jmeter -g "$results_file" -o "$report_dir"
+            else
+              echo "Error: $jmx_file doesn't exist or can't be opened"
+              exit 1
+            fi
+          done < test-files.txt
+
+      # Upload HTML Reports and Results as Artifacts
+      - name: Upload JMeter Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-html-reports
+          path: |
+            html-report-Script1
+            html-report-Script2
+
+      - name: Upload JMeter Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results
+          path: |
+            results_Script1.jtl
+            results_Script2.jtl
